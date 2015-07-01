@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<category-def name="de.walware.utils" label="WalWare - Utilities"/>
+	
+	<feature id="de.walware.eutils.yaml" version="0.0.0">
+		<category name="de.walware.utils"/>
+	</feature>
+	
+</site>

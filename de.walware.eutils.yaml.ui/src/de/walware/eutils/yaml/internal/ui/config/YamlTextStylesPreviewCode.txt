@@ -1,0 +1,22 @@
+%YAML 1.1
+---
+sequence:
+- one
+- two
+flow-sequence: [ one, two, ]
+
+mapping:
+  ? sky : blue
+  ? sea : green
+flow-mapping: { sky: blue, sea: green }
+
+# Node Anchors
+first occurrence: &anchor Value
+second occurrence: *anchor
+
+%TAG !example! tag:example.com,2014:
+---
+with type tags:
+- !local foo
+- !!str bar
+- !example!type baz

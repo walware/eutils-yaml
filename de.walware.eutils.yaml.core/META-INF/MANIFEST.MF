@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: de.walware.eutils.yaml.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: WalWare.de
+Bundle-Name: EUtils YAML Core
+Bundle-Activator: de.walware.eutils.yaml.internal.core.YamlCorePlugin
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
+ de.walware.ecommons.text.core;visibility:=reexport,
+ de.walware.ecommons.ltk.core;bundle-version="[2.3.0,2.4.0)",
+ org.eclipse.core.filebuffers,
+ org.eclipse.ltk.core.refactoring,
+ de.walware.3rdparty.snakeyaml
+Import-Package: com.ibm.icu.text;version="4.4.2.2",
+ de.walware.ecommons,
+ de.walware.ecommons.collections;version="1.1.0",
+ de.walware.ecommons.preferences,
+ de.walware.ecommons.resources;version="0.10.0"
+Export-Package: de.walware.eutils.yaml.core,
+ de.walware.eutils.yaml.core.ast,
+ de.walware.eutils.yaml.core.model,
+ de.walware.eutils.yaml.core.refactoring,
+ de.walware.eutils.yaml.core.source

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>de.walware.eutils</groupId>
+	<artifactId>eutils-yaml</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>EclipseUtils YAML Editor</name>
+	
+	<modules>
+		<module>targetplatform</module>
+		
+		<module>../de.walware.eutils.yaml.core</module>
+		<module>../de.walware.eutils.yaml.ui</module>
+	</modules>
+	
+	<prerequisites>
+		<maven>3.1.1</maven>
+	</prerequisites>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<tycho.version>0.22.0</tycho.version>
+		<tycho.scmUrl>scm:git:https://github.com/walware/eutils-yaml.git</tycho.scmUrl>
+	</properties>
+	
+	<repositories>
+		<repository>
+			<id>3rdparty-snakeyaml</id>
+			<url>${walware.repo.url.base}/3rdparty-snakeyaml</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<!-- configure the p2 repo/target -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+					<target>
+						<artifact>
+							<groupId>de.walware.eutils</groupId>
+							<artifactId>de.walware.eutils.yaml-default</artifactId>
+							<version>1.0.0-SNAPSHOT</version>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+			
+			<!-- enable source bundle generation -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>walware-releng</id>
+			
+			<modules>
+				<module>de.walware.eutils.yaml-feature</module>
+				
+				<module>repo</module>
+			</modules>
+			
+			<build>
+				<plugins>
+					<!-- enable source reference generation -->
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-packaging-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<configuration>
+							<sourceReferences>
+								<generate>true</generate>
+							</sourceReferences>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.eclipse.tycho.extras</groupId>
+								<artifactId>tycho-sourceref-jgit</artifactId>
+								<version>${tycho.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+					
+					<!-- enable source feature generation -->
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-source-feature-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<executions>
+							<execution>
+								<id>source-feature</id>
+								<phase>package</phase>
+								<goals>
+									<goal>source-feature</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<labelSuffix> - Sources</labelSuffix>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<executions>
+							<execution>
+								<id>attach-p2-metadata</id>
+								<phase>package</phase>
+								<goals>
+									<goal>p2-metadata</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
+</project>

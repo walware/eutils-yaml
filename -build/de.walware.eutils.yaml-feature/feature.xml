@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.walware.eutils.yaml"
+      label="YAML Editor"
+      version="1.0.0.qualifier"
+      provider-name="WalWare.de"
+      license-feature="de.walware.opensource.license"
+      license-feature-version="1.0.0">
+
+   <description url="http://www.walware.de/goto/statet">
+      Editor for YAML files.
+   </description>
+
+   <copyright>
+      Copyright (c) 2014-2015 Stephan Wahlbrink and others. All rights reserved.
+   </copyright>
+
+   <license url="%license_url">
+      %license_text
+   </license>
+
+   <requires>
+      <import feature="de.walware.3rdparty.snakeyaml" version="1.15.0" match="equivalent"/>
+   </requires>
+
+   <includes
+         id="de.walware.ecommons.ltk"
+         version="0.0.0"/>
+
+   <plugin
+         id="de.walware.eutils.yaml.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.walware.eutils.yaml.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
