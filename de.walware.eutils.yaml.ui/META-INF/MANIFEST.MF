@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.views,
  org.eclipse.compare,
  org.eclipse.ui.ide,
- de.walware.ecommons.uimisc;bundle-version="[1.5.0,1.6.0)",
+ de.walware.ecommons.uimisc;bundle-version="[1.6.0,1.7.0)",
  de.walware.ecommons.ltk.ui;bundle-version="[2.3.0,2.4.0)";visibility:=reexport,
  de.walware.eutils.yaml.core;bundle-version="[1.0.0,1.1.0)";visibility:=reexport
 Import-Package: de.walware.ecommons,
