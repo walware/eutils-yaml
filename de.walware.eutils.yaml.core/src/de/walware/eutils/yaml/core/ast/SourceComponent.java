@@ -24,8 +24,8 @@ public final class SourceComponent extends NContainer {
 	private final IAstNode parent;
 	
 	
-	public SourceComponent(final IAstNode parent, final int startOffset, final int stopOffset) {
-		super(null, startOffset, stopOffset);
+	public SourceComponent(final IAstNode parent, final int beginOffset, final int endOffset) {
+		super(null, beginOffset, endOffset);
 		
 		this.parent= parent;
 	}

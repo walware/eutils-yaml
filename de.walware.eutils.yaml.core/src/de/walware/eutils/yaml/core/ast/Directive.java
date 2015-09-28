@@ -22,8 +22,8 @@ import de.walware.eutils.yaml.core.ast.YamlAst.NodeType;
 public final class Directive extends YamlAstNode {
 	
 	
-	Directive(final SourceComponent parent, final int startOffset, final int stopOffset) {
-		super(parent, startOffset, stopOffset);
+	Directive(final SourceComponent parent, final int beginOffset, final int endOffset) {
+		super(parent, beginOffset, endOffset);
 	}
 	
 	

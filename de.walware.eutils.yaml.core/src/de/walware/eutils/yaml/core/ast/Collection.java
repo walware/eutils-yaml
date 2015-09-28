@@ -32,7 +32,7 @@ public abstract class Collection extends NContainer {
 		
 		@Override
 		public int getOpenIndicatorOffset() {
-			return this.startOffset;
+			return this.beginOffset;
 		}
 		
 		@Override

@@ -170,7 +170,7 @@ public class YamlProblemReporter extends YamlAstVisitor {
 			}
 			else {
 				return this.sourceContent.getText().substring(
-						node.getOffset() + offset, node.getStopOffset() + offset );
+						node.getOffset() + offset, node.getEndOffset() + offset );
 			}
 		}
 	}
@@ -183,14 +183,14 @@ public class YamlProblemReporter extends YamlAstVisitor {
 			addProblem(IProblem.SEVERITY_ERROR, code, this.messageBuilder.bind(
 					Messages.Syntax_GenTokenUnknown_message,
 					getStartText(node, 0) ),
-					node.getOffset(), node.getStopOffset() );
+					node.getOffset(), node.getEndOffset() );
 			return;
 			
 		case IYamlAstStatusConstants.STATUS2_SYNTAX_TOKEN_UNEXPECTED:
 			addProblem(IProblem.SEVERITY_ERROR, code, this.messageBuilder.bind(
 					Messages.Syntax_GenTokenUnexpected_message,
 					getStartText(node, 0) ),
-					node.getOffset(), node.getStopOffset() );
+					node.getOffset(), node.getEndOffset() );
 			return;
 		
 		default:
@@ -237,7 +237,7 @@ public class YamlProblemReporter extends YamlAstVisitor {
 				case STATUS1_SYNTAX_MISSING_INDICATOR | STATUS3_MAP_VALUE:
 					addProblem(IProblem.SEVERITY_ERROR, code,
 							Messages.Syntax_FlowSeqNotClosed_message,
-							node.getKeyNode().getStopOffset() - 1, node.getKeyNode().getStopOffset() + 1 );
+							node.getKeyNode().getEndOffset() - 1, node.getKeyNode().getEndOffset() + 1 );
 					break STATUS;
 				default:
 					handleCommonCodes(node, code);
@@ -262,7 +262,7 @@ public class YamlProblemReporter extends YamlAstVisitor {
 					addProblem(IProblem.SEVERITY_ERROR, code, this.messageBuilder.bind(
 							Messages.Syntax_QuotedScalarNotClosed_message,
 							getStartText(node, 1), String.valueOf(node.getOperator()) ),
-							node.getStopOffset() - 1, node.getStopOffset() + 1 );
+							node.getEndOffset() - 1, node.getEndOffset() + 1 );
 					break STATUS;
 				case STATUS2_SYNTAX_ESCAPE_INVALID:
 					detail= StatusDetail.getStatusDetail(node);
@@ -276,7 +276,7 @@ public class YamlProblemReporter extends YamlAstVisitor {
 						addProblem(IProblem.SEVERITY_ERROR, code, this.messageBuilder.bind(
 								Messages.Syntax_GenEscapeSequenceInvalid_messsage,
 								getStartText(node, 0) ),
-								node.getOffset(), node.getStopOffset() );
+								node.getOffset(), node.getEndOffset() );
 					}
 					break STATUS;
 				default:

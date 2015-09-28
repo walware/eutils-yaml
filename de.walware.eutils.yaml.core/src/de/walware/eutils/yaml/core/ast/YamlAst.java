@@ -11,8 +11,10 @@
 
 package de.walware.eutils.yaml.core.ast;
 
+import de.walware.ecommons.ltk.ast.Ast;
 
-public class YamlAst {
+
+public class YamlAst extends Ast {
 	
 	
 	/**
@@ -52,7 +54,7 @@ public class YamlAst {
 				if (offset < nodes[i].getOffset()) {
 					return -1;
 				}
-				if (offset <= nodes[i].getStopOffset()) {
+				if (offset <= nodes[i].getEndOffset()) {
 					return i;
 				}
 			}

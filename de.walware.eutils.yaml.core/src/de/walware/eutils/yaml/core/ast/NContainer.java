@@ -26,8 +26,8 @@ abstract class NContainer extends YamlAstNode {
 	NContainer() {
 	}
 	
-	NContainer(final YamlAstNode parent, final int startOffset, final int stopOffset) {
-		super(parent, startOffset, stopOffset);
+	NContainer(final YamlAstNode parent, final int beginOffset, final int endOffset) {
+		super(parent, beginOffset, endOffset);
 	}
 	
 	

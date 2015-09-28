@@ -26,9 +26,9 @@ public final class Tag extends YamlAstNode {
 	private final String suffix;
 	
 	
-	Tag(final YamlAstNode parent, final int startOffset, final int stopOffset,
+	Tag(final YamlAstNode parent, final int beginOffset, final int endOffset,
 			final String handle, final String suffix) {
-		super(parent, startOffset, stopOffset);
+		super(parent, beginOffset, endOffset);
 		
 		this.handle= handle;
 		this.suffix= suffix;

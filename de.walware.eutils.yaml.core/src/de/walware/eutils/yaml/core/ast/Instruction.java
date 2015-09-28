@@ -24,8 +24,8 @@ public class Instruction extends YamlAstNode {
 	
 	static final class DocStart extends Instruction {
 		
-		DocStart(final SourceComponent parent, final int startOffset, final int stopOffset) {
-			super(parent, startOffset, stopOffset);
+		DocStart(final SourceComponent parent, final int beginOffset, final int endOffset) {
+			super(parent, beginOffset, endOffset);
 		}
 		
 		
@@ -38,8 +38,8 @@ public class Instruction extends YamlAstNode {
 	
 	static final class DocEnd extends Instruction {
 		
-		DocEnd(final SourceComponent parent, final int startOffset, final int stopOffset) {
-			super(parent, startOffset, stopOffset);
+		DocEnd(final SourceComponent parent, final int beginOffset, final int endOffset) {
+			super(parent, beginOffset, endOffset);
 		}
 		
 		
@@ -51,8 +51,8 @@ public class Instruction extends YamlAstNode {
 	}
 	
 	
-	Instruction(final YamlAstNode parent, final int startOffset, final int stopOffset) {
-		super(parent, startOffset, stopOffset);
+	Instruction(final YamlAstNode parent, final int beginOffset, final int endOffset) {
+		super(parent, beginOffset, endOffset);
 	}
 	
 	

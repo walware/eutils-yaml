@@ -13,40 +13,35 @@ package de.walware.eutils.yaml.core.ast;
 
 import java.lang.reflect.InvocationTargetException;
 
-import de.walware.ecommons.collections.ImCollections;
-import de.walware.ecommons.collections.ImList;
 import de.walware.ecommons.ltk.ast.IAstNode;
-import de.walware.ecommons.ltk.ast.ICommonAstVisitor;
+import de.walware.ecommons.ltk.core.impl.AbstractAstNode;
 
 import de.walware.eutils.yaml.core.ast.YamlAst.NodeType;
 
 
-public abstract class YamlAstNode implements IAstNode {
+public abstract class YamlAstNode extends AbstractAstNode
+		implements IAstNode {
 	
 	
 	protected static final YamlAstNode[] NO_CHILDREN= new YamlAstNode[0];
-	
-	private static final ImList<Object> NO_ATTACHMENT= ImCollections.emptyList();
 	
 	
 	int status;
 	
 	YamlAstNode yamlParent;
 	
-	int startOffset;
-	int stopOffset;
-	
-	private volatile ImList<Object> attachments= NO_ATTACHMENT;
+	int beginOffset;
+	int endOffset;
 	
 	
 	YamlAstNode() {
 	}
 	
-	YamlAstNode(final YamlAstNode parent, final int startOffset, final int stopOffset) {
+	YamlAstNode(final YamlAstNode parent, final int beginOffset, final int endOffset) {
 		this.yamlParent= parent;
 		
-		this.startOffset= startOffset;
-		this.stopOffset= stopOffset;
+		this.beginOffset= beginOffset;
+		this.endOffset= endOffset;
 	}
 	
 	
@@ -70,62 +65,30 @@ public abstract class YamlAstNode implements IAstNode {
 		return this.yamlParent;
 	}
 	
-	@Override
-	public final IAstNode getRoot() {
-		IAstNode candidate= this;
-		IAstNode p;
-		while ((p= candidate.getParent()) != null) {
-			candidate= p;
-		}
-		return candidate;
-	}
 	
 	@Override
 	public final int getOffset() {
-		return this.startOffset;
+		return this.beginOffset;
 	}
 	
 	@Override
-	public final int getStopOffset() {
-		return this.stopOffset;
+	public final int getEndOffset() {
+		return this.endOffset;
 	}
 	
 	@Override
 	public final int getLength() {
-		return this.stopOffset - this.startOffset;
-	}
-	
-	public String getText() {
-		return null;
+		return this.endOffset - this.beginOffset;
 	}
 	
 	
 	@Override
 	public abstract YamlAstNode getChild(final int index);
 	
-	@Override
-	public final void accept(final ICommonAstVisitor visitor) throws InvocationTargetException {
-		visitor.visit(this);
-	}
 	
 	public abstract void acceptInYaml(YamlAstVisitor visitor) throws InvocationTargetException;
 	
 	public abstract void acceptInYamlChildren(YamlAstVisitor visitor) throws InvocationTargetException;
 	
-	
-	@Override
-	public synchronized void addAttachment(final Object data) {
-		this.attachments= ImCollections.addElement(this.attachments, data);
-	}
-	
-	@Override
-	public synchronized void removeAttachment(final Object data) {
-		this.attachments= ImCollections.removeElement(this.attachments, data);
-	}
-	
-	@Override
-	public ImList<Object> getAttachments() {
-		return this.attachments;
-	}
 	
 }

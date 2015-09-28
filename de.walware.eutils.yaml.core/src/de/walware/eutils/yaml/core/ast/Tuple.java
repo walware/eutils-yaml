@@ -31,8 +31,8 @@ public class Tuple extends YamlAstNode {
 	YamlAstNode valueNode;
 	
 	
-	Tuple(final YamlAstNode parent, final int startOffset, final int stopOffset) {
-		super(parent, startOffset, stopOffset);
+	Tuple(final YamlAstNode parent, final int beginOffset, final int endOffset) {
+		super(parent, beginOffset, endOffset);
 	}
 	
 	

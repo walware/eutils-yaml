@@ -159,7 +159,7 @@ public class YamlParser {
 			if (entry.keyNode == null) {
 				entry.keyNode= new Dummy(0, entry, // empty node
 						(entry.keyIndicatorOffset != Integer.MIN_VALUE) ?
-								entry.keyIndicatorOffset : entry.startOffset );
+								entry.keyIndicatorOffset : entry.beginOffset );
 			}
 			if (entry.status == 0 && entry.valueIndicatorOffset == Integer.MAX_VALUE) {
 				entry.status= STATUS1_SYNTAX_MISSING_INDICATOR | STATUS3_MAP_VALUE;
@@ -167,11 +167,11 @@ public class YamlParser {
 			if (entry.valueNode == null) {
 				entry.valueNode= new Dummy(0, entry, // empty node
 						(entry.valueIndicatorOffset != Integer.MIN_VALUE) ?
-								entry.valueIndicatorOffset : entry.keyNode.stopOffset );
+								entry.valueIndicatorOffset : entry.keyNode.endOffset );
 			}
-			final int min= entry.valueNode.stopOffset;
-			if (entry.stopOffset < min) {
-				entry.stopOffset= min;
+			final int min= entry.valueNode.endOffset;
+			if (entry.endOffset < min) {
+				entry.endOffset= min;
 			}
 			return;
 		}
@@ -197,7 +197,7 @@ public class YamlParser {
 		
 		{	final NContainer container= (NContainer) this.currentNode;
 			if (stopOffset != Integer.MIN_VALUE) {
-				container.stopOffset= stopOffset;
+				container.endOffset= stopOffset;
 			}
 			
 			final List<YamlAstNode> children= this.childrenStack.get(this.depth);
@@ -205,9 +205,9 @@ public class YamlParser {
 				container.children= children.toArray(new YamlAstNode[children.size()]);
 				children.clear();
 				
-				final int min= container.children[container.children.length - 1].getStopOffset();
-				if (container.stopOffset < min) {
-					container.stopOffset= min;
+				final int min= container.children[container.children.length - 1].getEndOffset();
+				if (container.endOffset < min) {
+					container.endOffset= min;
 				}
 			}
 		}
@@ -510,7 +510,7 @@ public class YamlParser {
 				enterNode(node);
 				checkForProblem(token.getStartMark(), node);
 				if (node.getLength() > 0) { // explicite
-					node.keyIndicatorOffset= node.startOffset;
+					node.keyIndicatorOffset= node.beginOffset;
 				}
 				continue;
 			}
@@ -530,7 +530,7 @@ public class YamlParser {
 				}
 				checkForProblem(token.getStartMark(), node);
 				node.valueIndicatorOffset= token.getStartMark().getIndex();
-				node.stopOffset= token.getEndMark().getIndex();
+				node.endOffset= token.getEndMark().getIndex();
 				continue;
 			}
 			
@@ -658,7 +658,7 @@ public class YamlParser {
 		case CScannerConstants.UNEXPECTED_CHAR:
 		case CScannerConstants.UNEXPECTED_CHAR_2:
 			if (p.problemMark != null && p.problemMark.getIndex() >= node.getOffset()
-					&& p.problemMark.getIndex() < node.getStopOffset()
+					&& p.problemMark.getIndex() < node.getEndOffset()
 					&& p.problemText != null) {
 				node.status= STATUS2_SYNTAX_CHAR_INVALID;
 				node.addAttachment(new StatusDetail(

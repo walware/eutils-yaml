@@ -24,9 +24,9 @@ public class Label extends YamlAstNode {
 	
 	static final class Anchor extends Label {
 		
-		Anchor(final YamlAstNode parent, final int startOffset, final int stopOffset,
+		Anchor(final YamlAstNode parent, final int beginOffset, final int endOffset,
 				final String label) {
-			super(parent, startOffset, stopOffset, label);
+			super(parent, beginOffset, endOffset, label);
 		}
 		
 		
@@ -39,9 +39,9 @@ public class Label extends YamlAstNode {
 	
 	static final class Reference extends Label {
 		
-		Reference(final YamlAstNode parent, final int startOffset, final int stopOffset,
+		Reference(final YamlAstNode parent, final int beginOffset, final int endOffset,
 				final String label) {
-			super(parent, startOffset, stopOffset, label);
+			super(parent, beginOffset, endOffset, label);
 		}
 		
 		
@@ -56,9 +56,9 @@ public class Label extends YamlAstNode {
 	private final String label;
 	
 	
-	private Label(final YamlAstNode parent, final int startOffset, final int stopOffset,
+	private Label(final YamlAstNode parent, final int beginOffset, final int endOffset,
 			final String label) {
-		super(parent, startOffset, stopOffset);
+		super(parent, beginOffset, endOffset);
 		
 		this.label= label;
 	}

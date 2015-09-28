@@ -24,8 +24,8 @@ public abstract class Scalar extends YamlAstNode {
 	
 	static class DQuoted extends Scalar {
 		
-		DQuoted(final YamlAstNode parent, final int startOffset, final int stopOffset, final String value) {
-			super(parent, startOffset, stopOffset, value);
+		DQuoted(final YamlAstNode parent, final int beginOffset, final int endOffset, final String value) {
+			super(parent, beginOffset, endOffset, value);
 		}
 		
 		@Override
@@ -37,8 +37,8 @@ public abstract class Scalar extends YamlAstNode {
 	
 	static class SQuoated extends Scalar {
 		
-		SQuoated(final YamlAstNode parent, final int startOffset, final int stopOffset, final String value) {
-			super(parent, startOffset, stopOffset, value);
+		SQuoated(final YamlAstNode parent, final int beginOffset, final int endOffset, final String value) {
+			super(parent, beginOffset, endOffset, value);
 		}
 		
 		@Override
@@ -50,8 +50,8 @@ public abstract class Scalar extends YamlAstNode {
 	
 	static class Plain extends Scalar {
 		
-		Plain(final YamlAstNode parent, final int startOffset, final int stopOffset, final String value) {
-			super(parent, startOffset, stopOffset, value);
+		Plain(final YamlAstNode parent, final int beginOffset, final int endOffset, final String value) {
+			super(parent, beginOffset, endOffset, value);
 		}
 		
 		@Override
@@ -65,9 +65,9 @@ public abstract class Scalar extends YamlAstNode {
 	String value;
 	
 	
-	Scalar(final YamlAstNode parent, final int startOffset, final int stopOffset,
+	Scalar(final YamlAstNode parent, final int beginOffset, final int endOffset,
 			final String value) {
-		super(parent, startOffset, stopOffset);
+		super(parent, beginOffset, endOffset);
 		
 		this.value= value;
 	}

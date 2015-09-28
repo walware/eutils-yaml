@@ -28,8 +28,8 @@ public final class Dummy extends YamlAstNode {
 		this.status= status;
 	}
 	
-	Dummy(final int status, final YamlAstNode parent, final int startOffset, final int stopOffset) {
-		super(parent, startOffset, stopOffset);
+	Dummy(final int status, final YamlAstNode parent, final int beginOffset, final int endOffset) {
+		super(parent, beginOffset, endOffset);
 		
 		this.status= status;
 	}
