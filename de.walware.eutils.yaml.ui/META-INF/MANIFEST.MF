@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: de.walware.eutils.yaml.ui;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: WalWare.de
 Bundle-Name: EUtils YAML UI
 Bundle-Activator: de.walware.eutils.yaml.internal.ui.YamlUIPlugin
@@ -17,8 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.compare,
  org.eclipse.ui.ide,
  de.walware.ecommons.uimisc;bundle-version="[1.6.0,1.7.0)",
- de.walware.ecommons.ltk.ui;bundle-version="[2.3.0,2.4.0)";visibility:=reexport,
- de.walware.eutils.yaml.core;bundle-version="[1.0.0,1.1.0)";visibility:=reexport
+ de.walware.ecommons.ltk.ui;bundle-version="[2.4.0,2.5.0)";visibility:=reexport,
+ de.walware.eutils.yaml.core;bundle-version="[1.1.0,1.2.0)";visibility:=reexport
 Import-Package: de.walware.ecommons,
  de.walware.ecommons.collections;version="1.1.0",
  de.walware.ecommons.databinding;version="0.10.0",
