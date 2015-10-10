@@ -23,10 +23,6 @@ import de.walware.ecommons.text.core.treepartitioner.TreePartitioner;
 public class YamlDocumentSetupParticipant extends PartitionerDocumentSetupParticipant {
 	
 	
-	private static final String[] CONTENT_TYPES= IYamlDocumentConstants.YAML_CONTENT_TYPES.toArray(
-			new String[IYamlDocumentConstants.YAML_CONTENT_TYPES.size()] );
-	
-	
 	public YamlDocumentSetupParticipant() {
 	}
 	
@@ -38,9 +34,9 @@ public class YamlDocumentSetupParticipant extends PartitionerDocumentSetupPartic
 	
 	@Override
 	protected IDocumentPartitioner createDocumentPartitioner() {
-		return new TreePartitioner(
+		return new TreePartitioner(getPartitioningId(),
 				new YamlPartitionNodeScanner(),
-				CONTENT_TYPES );
+				IYamlDocumentConstants.YAML_CONTENT_TYPES );
 	}
 	
 }

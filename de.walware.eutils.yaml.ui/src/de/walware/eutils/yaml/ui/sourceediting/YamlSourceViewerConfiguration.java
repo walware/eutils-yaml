@@ -48,6 +48,7 @@ import de.walware.eutils.yaml.core.source.YamlBracketPairMatcher;
 import de.walware.eutils.yaml.core.source.YamlDocumentContentInfo;
 import de.walware.eutils.yaml.core.source.YamlHeuristicTokenScanner;
 import de.walware.eutils.yaml.internal.ui.YamlUIPlugin;
+import de.walware.eutils.yaml.internal.ui.sourceediting.YamlAutoEditStrategy;
 import de.walware.eutils.yaml.internal.ui.sourceediting.YamlQuickOutlineInformationProvider;
 import de.walware.eutils.yaml.ui.text.IYamlTextStyles;
 import de.walware.eutils.yaml.ui.text.YamlDefaultTextStyleScanner;
@@ -130,7 +131,7 @@ public class YamlSourceViewerConfiguration extends SourceEditorViewerConfigurati
 	public void handleSettingsChanged(final Set<String> groupIds, final Map<String, Object> options) {
 		super.handleSettingsChanged(groupIds, options);
 		if (this.autoEditStrategy != null) {
-			this.autoEditStrategy.settings.updateSettings();
+			this.autoEditStrategy.getSettings().handleSettingsChanged(groupIds, options);
 		}
 	}
 	
