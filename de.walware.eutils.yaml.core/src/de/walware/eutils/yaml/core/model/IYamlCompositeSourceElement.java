@@ -11,7 +11,7 @@
 
 package de.walware.eutils.yaml.core.model;
 
-import de.walware.ecommons.collections.ImList;
+import de.walware.jcommons.collections.ImList;
 
 
 public interface IYamlCompositeSourceElement extends IYamlSourceElement {

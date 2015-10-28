@@ -11,9 +11,9 @@
 
 package de.walware.eutils.yaml.core.source;
 
-import java.util.List;
+import de.walware.jcommons.collections.ImCollections;
+import de.walware.jcommons.collections.ImList;
 
-import de.walware.ecommons.collections.ImCollections;
 import de.walware.ecommons.text.core.IPartitionConstraint;
 
 
@@ -32,10 +32,11 @@ public interface IYamlDocumentConstants {
 	String YAML_TAG_CONTENT_TYPE= "Yaml.Tag"; //$NON-NLS-1$
 	String YAML_VALUE_CONTENT_TYPE= "Yaml.Value"; //$NON-NLS-1$
 	
+	
 	/**
 	 * List with all partition content types of YAML documents.
 	 */
-	List<String> YAML_CONTENT_TYPES= ImCollections.newList(
+	ImList<String> YAML_CONTENT_TYPES= ImCollections.newList(
 			YAML_DEFAULT_CONTENT_TYPE,
 			YAML_COMMENT_CONTENT_TYPE,
 			YAML_DIRECTIVE_CONTENT_TYPE,
