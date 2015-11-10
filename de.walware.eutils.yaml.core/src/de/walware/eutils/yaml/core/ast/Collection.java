@@ -22,7 +22,7 @@ public abstract class Collection extends NContainer {
 	static abstract class FlowCollection extends Collection {
 		
 		
-		int closeIndicatorOffset= Integer.MIN_VALUE;
+		int closeIndicatorOffset= NA_OFFSET;
 		
 		
 		FlowCollection(final YamlAstNode parent, final int offset, final int stopOffset) {
@@ -93,12 +93,12 @@ public abstract class Collection extends NContainer {
 		
 		@Override
 		public int getOpenIndicatorOffset() {
-			return Integer.MIN_VALUE;
+			return NA_OFFSET;
 		}
 		
 		@Override
 		public int getCloseIndicatorOffset() {
-			return Integer.MIN_VALUE;
+			return NA_OFFSET;
 		}
 		
 		

@@ -22,11 +22,11 @@ import de.walware.eutils.yaml.core.ast.YamlAst.NodeType;
 public class Tuple extends YamlAstNode {
 	
 	
-	int keyIndicatorOffset= Integer.MAX_VALUE;
+	int keyIndicatorOffset= NA_OFFSET;
 	
 	YamlAstNode keyNode;
 	
-	int valueIndicatorOffset= Integer.MIN_VALUE;
+	int valueIndicatorOffset= NA_OFFSET;
 	
 	YamlAstNode valueNode;
 	

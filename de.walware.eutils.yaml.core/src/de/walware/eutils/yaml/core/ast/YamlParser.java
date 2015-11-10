@@ -11,6 +11,7 @@
 
 package de.walware.eutils.yaml.core.ast;
 
+import static de.walware.ecommons.ltk.ast.IAstNode.NA_OFFSET;
 import static de.walware.eutils.yaml.core.ast.IYamlAstStatusConstants.STATUS1_SYNTAX_MISSING_INDICATOR;
 import static de.walware.eutils.yaml.core.ast.IYamlAstStatusConstants.STATUS2_SYNTAX_CHAR_INVALID;
 import static de.walware.eutils.yaml.core.ast.IYamlAstStatusConstants.STATUS2_SYNTAX_COLLECTION_NOT_CLOSED;
@@ -135,7 +136,7 @@ public class YamlParser {
 	private void addChild(final YamlAstNode node) {
 		if (this.currentNode.getNodeType() == NodeType.MAP_ENTRY) {
 			final Tuple entry= (Tuple) this.currentNode;
-			if (entry.keyNode == null && entry.valueIndicatorOffset == Integer.MIN_VALUE) {
+			if (entry.keyNode == null && entry.valueIndicatorOffset == NA_OFFSET) {
 				entry.keyNode= node;
 			}
 			else {
@@ -158,7 +159,7 @@ public class YamlParser {
 			final Tuple entry= (Tuple) this.currentNode;
 			if (entry.keyNode == null) {
 				entry.keyNode= new Dummy(0, entry, // empty node
-						(entry.keyIndicatorOffset != Integer.MIN_VALUE) ?
+						(entry.keyIndicatorOffset != NA_OFFSET) ?
 								entry.keyIndicatorOffset : entry.beginOffset );
 			}
 			if (entry.status == 0 && entry.valueIndicatorOffset == Integer.MAX_VALUE) {
@@ -166,7 +167,7 @@ public class YamlParser {
 			}
 			if (entry.valueNode == null) {
 				entry.valueNode= new Dummy(0, entry, // empty node
-						(entry.valueIndicatorOffset != Integer.MIN_VALUE) ?
+						(entry.valueIndicatorOffset != NA_OFFSET) ?
 								entry.valueIndicatorOffset : entry.keyNode.endOffset );
 			}
 			final int min= entry.valueNode.endOffset;
@@ -179,12 +180,12 @@ public class YamlParser {
 			final Collection collection= (Collection) this.currentNode;
 			switch (this.currentNode.getOperator()) {
 			case '[':
-				if (collection.getCloseIndicatorOffset() == Integer.MIN_VALUE) {
+				if (collection.getCloseIndicatorOffset() == NA_OFFSET) {
 					collection.status= STATUS2_SYNTAX_COLLECTION_NOT_CLOSED | STATUS3_FLOW_SEQ;
 				}
 				break;
 			case '{':
-				if (collection.getCloseIndicatorOffset() == Integer.MIN_VALUE) {
+				if (collection.getCloseIndicatorOffset() == NA_OFFSET) {
 					collection.status= STATUS2_SYNTAX_COLLECTION_NOT_CLOSED | STATUS3_FLOW_MAP;
 				}
 				break;
@@ -196,7 +197,7 @@ public class YamlParser {
 		}
 		
 		{	final NContainer container= (NContainer) this.currentNode;
-			if (stopOffset != Integer.MIN_VALUE) {
+			if (stopOffset != NA_OFFSET) {
 				container.endOffset= stopOffset;
 			}
 			
@@ -341,7 +342,7 @@ public class YamlParser {
 	}
 	
 	private void exit() {
-		finish(Integer.MIN_VALUE);
+		finish(NA_OFFSET);
 		this.currentNode= this.currentNode.yamlParent;
 		this.depth--;
 		
