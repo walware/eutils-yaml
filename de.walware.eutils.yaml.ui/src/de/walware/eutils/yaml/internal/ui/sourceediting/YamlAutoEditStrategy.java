@@ -422,8 +422,8 @@ public class YamlAutoEditStrategy extends AbstractAutoEditStrategy {
 		
 		model.forceInstall();
 		
-		final YamlBracketLevel level= new YamlBracketLevel(
-				getDocument(), getDocumentContentInfo().getPartitioning(),
+		final YamlBracketLevel level= new YamlBracketLevel(model,
+				getDocument(), getDocumentContentInfo(),
 				ImCollections.newList(position), (mode & 0xffff0000) );
 		
 		/* create UI */

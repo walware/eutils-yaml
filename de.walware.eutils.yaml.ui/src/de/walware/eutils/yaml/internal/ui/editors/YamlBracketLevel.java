@@ -15,9 +15,11 @@ import java.util.List;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.link.LinkedModeModel;
 import org.eclipse.jface.text.link.LinkedPosition;
 
 import de.walware.ecommons.text.TextUtil;
+import de.walware.ecommons.text.core.sections.IDocContentSections;
 import de.walware.ecommons.text.ui.BracketLevel;
 
 
@@ -140,9 +142,10 @@ public class YamlBracketLevel extends BracketLevel {
 	}
 	
 	
-	public YamlBracketLevel(final IDocument doc, final String partitioning,
+	public YamlBracketLevel(final LinkedModeModel model,
+			final IDocument document, final IDocContentSections docContentSections,
 			final List<LinkedPosition> positions, final int mode) {
-		super(doc, partitioning, positions, mode);
+		super(model, document, docContentSections, positions, mode);
 	}
 	
 }

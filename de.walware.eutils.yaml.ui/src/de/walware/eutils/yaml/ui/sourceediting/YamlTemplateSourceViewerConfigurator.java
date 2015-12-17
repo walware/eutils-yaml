@@ -14,9 +14,9 @@ package de.walware.eutils.yaml.ui.sourceediting;
 import org.eclipse.core.filebuffers.IDocumentSetupParticipant;
 import org.eclipse.jface.text.ITextHover;
 import org.eclipse.jface.text.ITextViewerExtension2;
-import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.source.ISourceViewer;
 
+import de.walware.ecommons.ltk.ui.sourceediting.assist.ContentAssist;
 import de.walware.ecommons.templates.TemplateVariableProcessor;
 
 import de.walware.eutils.yaml.core.IYamlCoreAccess;
@@ -40,7 +40,7 @@ public class YamlTemplateSourceViewerConfigurator extends YamlSourceViewerConfig
 		
 		
 		@Override
-		protected ContentAssistant createContentAssistant(final ISourceViewer sourceViewer) {
+		protected ContentAssist createContentAssistant(final ISourceViewer sourceViewer) {
 			return createTemplateVariableContentAssistant(sourceViewer, this.processor);
 		}
 		

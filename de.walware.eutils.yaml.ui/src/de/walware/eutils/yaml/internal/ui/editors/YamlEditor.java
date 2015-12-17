@@ -13,16 +13,12 @@ package de.walware.eutils.yaml.internal.ui.editors;
 
 import java.util.List;
 
-import org.eclipse.core.commands.IHandler2;
 import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.texteditor.AbstractDecoratedTextEditorPreferenceConstants;
 
-import de.walware.ecommons.ltk.ui.sourceediting.ISourceEditorCommandIds;
 import de.walware.ecommons.ltk.ui.sourceediting.SourceEditor1;
 import de.walware.ecommons.ltk.ui.sourceediting.SourceEditor1OutlinePage;
 import de.walware.ecommons.ltk.ui.sourceediting.SourceEditorViewerConfigurator;
-import de.walware.ecommons.ltk.ui.sourceediting.actions.SpecificContentAssistHandler;
 
 import de.walware.eutils.yaml.core.YamlCore;
 import de.walware.eutils.yaml.core.model.YamlModel;
@@ -95,17 +91,6 @@ public class YamlEditor extends SourceEditor1 {
 		pageIds.add("de.walware.eutils.yaml.preferencePages.YamlTextStyles"); //$NON-NLS-1$
 		pageIds.add("de.walware.eutils.yaml.preferencePages.YamlEditorTemplates"); //$NON-NLS-1$
 		pageIds.add("de.walware.eutils.yaml.preferencePages.YamlCodeStyle"); //$NON-NLS-1$
-	}
-	
-	@Override
-	protected void createActions() {
-		super.createActions();
-		final IHandlerService handlerService= (IHandlerService) getServiceLocator().getService(IHandlerService.class);
-		
-		{	final IHandler2 handler= new SpecificContentAssistHandler(this,
-							YamlUIPlugin.getInstance().getYamlEditorContentAssistRegistry() );
-			handlerService.activateHandler(ISourceEditorCommandIds.SPECIFIC_CONTENT_ASSIST_COMMAND_ID, handler);
-		}
 	}
 	
 	@Override
