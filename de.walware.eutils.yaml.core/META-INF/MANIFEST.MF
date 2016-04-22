@@ -7,18 +7,18 @@ Bundle-Name: EUtils YAML Core
 Bundle-Activator: de.walware.eutils.yaml.internal.core.YamlCorePlugin
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.11",
  de.walware.ecommons.text.core;visibility:=reexport,
  de.walware.ecommons.ltk.core;bundle-version="[2.5.0,2.6.0)",
  org.eclipse.core.filebuffers,
  org.eclipse.ltk.core.refactoring,
  de.walware.3rdparty.snakeyaml
-Import-Package: com.ibm.icu.text;version="4.4.2.2",
+Import-Package: com.ibm.icu.text;version="54.1",
  de.walware.ecommons,
  de.walware.ecommons.preferences,
  de.walware.ecommons.preferences.core,
- de.walware.ecommons.resources;version="0.10.0",
+ de.walware.ecommons.resources.core;version="0.10.0",
  de.walware.jcommons.collections;version="1.0"
 Export-Package: de.walware.eutils.yaml.core,
  de.walware.eutils.yaml.core.ast,
